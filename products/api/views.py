@@ -5,13 +5,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import viewsets
 
-from products.api.permissions import IsAdminOrReadOnly
+from products.api.permissions import IsSuperUserOrReadWrite
 from products.models import Product,Stock
 from products.api.serializer import StockSerializer
 class StockViewSet(viewsets.ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsSuperUserOrReadWrite]
 # Create your views here.
 # def product_list(request):
 #     stocks=Stock.objects.all()
